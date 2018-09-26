@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)https://www.cnblogs.com/v88v/p/8909845.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="origin">
+<title>【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园</title>
+<meta property="og:description" content="上一篇我们已经初步的构建起了一个学生管理系统的模型，现在接着来继续完善它吧。 1、上传图片/文件等资源 有时候需要添加一些附件，例如，新生刚入学，大家相互之间还不熟悉，希望能通过照片来加深印象，并且方">
+<link type="text/css" rel="stylesheet" href="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/bundle-CodingLife.css">
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/bundle-CodingLife-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/v88v/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/v88v/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/v88v/wlwmanifest.xml">
+<script async="" src="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/analytics.js.下载"></script><script type="text/javascript" src="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/encoder.js.下载"></script><script src="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/jquery-2.2.0.min.js.下载"></script>
+<script type="text/javascript">var currentBlogApp = 'v88v', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/blog-common.js.下载" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="https://www.cnblogs.com/v88v/"><img id="blogLogo" src="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="https://www.cnblogs.com/v88v/">纵世科技-Wiger原创</a></h1>
+<h2>宝宝巴士自动化团队—Wiger
+软件定制请联系QQ：18630195</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">博客园</a></li>
+<li><a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/v88v/">首页</a></li>
+<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="blog_nav_contact" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/%E7%BA%B5%E4%B8%96%E7%A7%91%E6%8A%80">联系</a></li>
+<li><a id="blog_nav_rss" class="menu" href="https://www.cnblogs.com/v88v/rss">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="https://www.cnblogs.com/v88v/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<span id="stats_post_count">随笔 - 17&nbsp; </span>
+<span id="stats_article_count">文章 - 0&nbsp; </span>
+<span id="stats-comment_count">评论 - 2</span>
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="https://www.cnblogs.com/v88v/p/8909845.html">【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body" class="blogpost-body"><p>上一篇我们已经初步的构建起了一个学生管理系统的模型，现在接着来继续完善它吧。</p>
+<hr>
+<p>&nbsp;</p>
+<p><span style="font-size: 15px;"><strong>1、上传图片/文件等资源</strong></span></p>
+<p>有时候需要添加一些附件，例如，<span style="font-size: 16px;"><span style="font-size: 14px;">新生刚入学，大家相互之间还不熟悉，希望能通过照片来加深印象，并且方便教学管理。</span></span></p>
+<p><span style="font-size: 16px;"><span style="font-size: 14px;">首先，对demo/urls.py文件进行改造，给urlpatterns添加static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)：</span></span></p>
+<div class="cnblogs_code">
+<pre>urlpatterns =<span style="color: #000000;"> [
+    path(r</span><span style="color: #800000;">''</span><span style="color: #000000;">, xadmin.site.urls),
+] </span>+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)</pre>
+</div>
+<p>然后在demo/settings.py文件中添加</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre># 指定上传位置<br>LOCATION = os.path.join(<span style="color: #800000;">'</span><span style="color: #800000;">/</span><span style="color: #800000;">'</span>, <span style="color: #800000;">'</span><span style="color: #800000;">Users</span><span style="color: #800000;">'</span>, <span style="color: #800000;">'</span><span style="color: #800000;">babybus</span><span style="color: #800000;">'</span><span>)</span></pre>
+<pre><span style="color: #000000;"># 媒体文件根目录<br>MEDIA_ROOT </span>= os.path.join(LOCATION, <span style="color: #800000;">'</span><span style="color: #800000;">Media</span><span style="color: #800000;">'</span><span style="color: #000000;">)
+
+ROOT_URL </span>= <span style="color: #800000;">'</span><span style="color: #800000;">/</span><span style="color: #800000;">'</span><span style="color: #000000;">
+
+MEDIA_URL </span>= <span style="color: #800000;">'</span><span style="color: #800000;">/media/</span><span style="color: #800000;">'</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p>上传图片涉及到路径的获取，在models.py文件中导入os模块</p>
+<div class="cnblogs_code">
+<pre>import os</pre>
+</div>
+<p>在models.py文件的Students类中添加一个路径获取的方法及models.ImageField字段：</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">def</span><span style="color: #000000;"> get_photo(self, filename):
+    </span><span style="color: #0000ff;">return</span> os.path.join(<span style="color: #800000;">'</span><span style="color: #800000;">photo</span><span style="color: #800000;">'</span>, <span style="color: #800000;">'</span><span style="color: #800000;">%s_%s_%s_%s</span><span style="color: #800000;">'</span> % (self.class_name, self.name, self.id, os.path.splitext(filename)[1]))</pre>
+<pre>photo = models.ImageField(verbose_name='照片', upload_to=get_photo, blank=True, null=True)</pre>
+</div>
+<p>同时同步一下数据库操作，这样页面就多出一个照片上传的选项了，选择好照片并保存：</p>
+<p><img src="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/824940-20180422210032733-270553993.png" alt=""></p>
+<p>&nbsp;</p>
+<p><span style="font-size: 15px;"><strong>2、筛选、过滤、排序</strong></span></p>
+<p><span style="font-size: 14px;"><strong>1）筛选</strong></span></p>
+<p><span style="font-size: 14px;">今年学校的录取率爆满，生源特别好，要在一个数据库中找到对应的学生，必然需要用到搜索功能。</span></p>
+<p><span style="font-size: 14px;">修改adminx.py文件，在StudentsAdmin类中添加:</span></p>
+<div class="cnblogs_code">
+<pre>search_fields = (<span style="color: #800000;">'</span><span style="color: #800000;">name</span><span style="color: #800000;">'</span>, )</pre>
+</div>
+<p><img src="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/824940-20180422212118793-991546427.png" alt=""></p>
+<p>&nbsp;</p>
+<p>要是我们想通过班级或者学科来查找这个班级或者选修这门学科的所有学生，方法还会是一样的吗？我们先试试：</p>
+<div class="cnblogs_code">
+<pre>search_fields = (<span style="color: #800000;">'</span><span style="color: #800000;">name</span><span style="color: #800000;">'</span>, <span style="color: #800000;">'</span><span style="color: #800000;">class_name</span><span style="color: #800000;">'</span>, <span style="color: #800000;">'</span><span style="color: #800000;">subjects</span><span style="color: #800000;">'</span>,)</pre>
+</div>
+<p>结果，报错了：</p>
+<p><img src="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/824940-20180422212354712-304959810.png" alt=""></p>
+<p>这是怎么回事呢？原来，我们搜的“班级”和“学科”这两个字段一个是外键一个是含有多对多关系，Student模型中的这两个字段名称并不是其实际名称，要在字段后加“__”两个下划线，然后再添加外键或多对多关系实际的字段名：</p>
+<div class="cnblogs_code">
+<pre>search_fields = (<span style="color: #800000;">'</span><span style="color: #800000;">name</span><span style="color: #800000;">'</span>, <span style="color: #800000;">'</span><span style="color: #800000;">class_name__class_name</span><span style="color: #800000;">'</span>, <span style="color: #800000;">'</span><span style="color: #800000;">subjects__name</span><span style="color: #800000;">'</span>,)</pre>
+</div>
+<p><img src="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/824940-20180422212903862-1805569199.png" alt=""></p>
+<p>现在妥妥的了。</p>
+<p><strong>2）过滤：</strong></p>
+<p>如果只想查看学生表中的男生或者女生的信息，那就用到了过滤功能：</p>
+<p>修改adminx.py文件，在StudentsAdmin类中添加：</p>
+<div class="cnblogs_code">
+<pre>list_filter = (<span style="color: #800000;">'</span><span style="color: #800000;">sex</span><span style="color: #800000;">'</span>,)</pre>
+</div>
+<p><img src="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/824940-20180422213252169-439419509.png" alt=""></p>
+<p>&nbsp;</p>
+<p><strong>3）排序：</strong></p>
+<p>如果想让学生按某字段的顺序来排序，同样我们需要在adminx.py文件中的StudentsAdmin类中添加ordering选项：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<p># 顺序排序<br>ordering = ('age', 'name', )</p>
+<p># 逆序排序，在前面加一个减号"-"，例如按年龄倒序排列</p>
+<p>ordering = ('-age',)</p>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>这表示同时按照年龄和姓名字段来排序。</p>
+<p>&nbsp;</p>
+<p><span style="font-size: 16px;"><strong>二、定制网站信息</strong></span></p>
+<p><span style="font-size: 16px;"><span style="font-size: 14px;">我们希望登录网站的时候，显示站点的名称，修改adminx.py文件，添加LoginViewAdmin类，并注册：</span></span></p>
+<p>&nbsp;</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff;">from</span> xadmin.views.website <span style="color: #0000ff;">import</span><span style="color: #000000;"> LoginView
+
+</span><span style="color: #0000ff;">class</span><span style="color: #000000;"> LoginViewAdmin(LoginView):
+    title </span>= <span style="color: #800000;">'</span><span style="color: #800000;">学生信息管理系统</span><span style="color: #800000;">'</span><span style="color: #000000;">
+
+
+xadmin.site.register(LoginView, LoginViewAdmin)</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/824940-20180422214140818-362559964.png" alt=""></p>
+<p>&nbsp;</p>
+<p>还可以继续修改，例如浏览器标题和左上角的网页标题以及页脚的版权信息：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff;">from</span> xadmin.views <span style="color: #0000ff;">import</span><span style="color: #000000;"> CommAdminView
+</span><span style="color: #0000ff;">class</span><span style="color: #000000;"> GlobalSetting(CommAdminView):
+    </span><span style="color: #008000;">#</span><span style="color: #008000;"> 左上角及浏览器标题</span>
+    site_title = <span style="color: #800000;">'</span><span style="color: #800000;">学生信息管理系统</span><span style="color: #800000;">'</span>
+    <span style="color: #008000;">#</span><span style="color: #008000;"> 页脚版权信息</span>
+    site_footer = <span style="color: #800000;">'</span><span style="color: #800000;">Copyright © 2018 宝宝巴士</span><span style="color: #800000;">'</span><span style="color: #000000;">
+
+
+xadmin.site.register(CommAdminView, GlobalSetting)</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p><img src="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/824940-20180422214738485-672262954.png" alt=""></p>
+<p>&nbsp;</p>
+<p>&nbsp;左侧边栏如果以后项目越来越多了，有一个归类会更好看些，也方便管理操作。这就需要在GlobalSetting类中添加</p>
+<div class="cnblogs_code">
+<pre>menu_style = <span style="color: #800000;">'</span><span style="color: #800000;">accordion</span><span style="color: #800000;">'</span></pre>
+</div>
+<p><img src="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/824940-20180422215113360-1728529702.png" alt=""></p>
+<p>&nbsp;</p>
+<blockquote>
+<p><span style="font-size: 16px;">Xadmin入门就到此为止吧，在后续的博文中我会继续深入讲解Django+Xadmin的进阶用法和操作。</span></p>
+</blockquote></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="https://www.cnblogs.com/v88v/category/1200122.html" target="_blank">Django学习心得</a></div>
+<div id="EntryTag">标签: <a href="https://www.cnblogs.com/v88v/tag/python/">python</a>, <a href="https://www.cnblogs.com/v88v/tag/Django/">Django</a>, <a href="https://www.cnblogs.com/v88v/tag/xadmin/">xadmin</a>, <a href="https://www.cnblogs.com/v88v/tag/%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">学生信息管理系统</a></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(8909845,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow(&#39;d7e80433-cd76-e511-9fc1-ac853d9f53cc&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/v88v/" target="_blank"><img src="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/20161123092521.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/v88v/">纵世科技</a><br>
+            <a href="http://home.cnblogs.com/u/v88v/followees">关注 - 2</a><br>
+            <a href="http://home.cnblogs.com/u/v88v/followers">粉丝 - 15</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;d7e80433-cd76-e511-9fc1-ac853d9f53cc&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(8909845,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+    <div class="buryit" onclick="votePost(8909845,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="https://www.cnblogs.com/v88v/p/8886764.html" class="p_n_p_prefix">« </a> 上一篇：<a href="https://www.cnblogs.com/v88v/p/8886764.html" title="发布于2018-04-19 22:55">【Python3.6+Django2.0+Xadmin2.0系列教程之二（入门篇-中）】学生信息管理系统</a><br><a href="https://www.cnblogs.com/v88v/p/9265997.html" class="p_n_p_prefix">» </a> 下一篇：<a href="https://www.cnblogs.com/v88v/p/9265997.html" title="发布于2018-07-04 23:26">[原创软件]友盟自动添加版本工具</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2018-04-22 21:55</span> <a href="https://www.cnblogs.com/v88v/">纵世科技</a> 阅读(<span id="post_view_count">1008</span>) 评论(<span id="post_comment_count">0</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=8909845" rel="nofollow">编辑</a> <a href="https://www.cnblogs.com/v88v/p/8909845.html#" onclick="AddToWz(8909845);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=249850,cb_entryId=8909845,cb_blogApp=currentBlogApp,cb_blogUserGuid='d7e80433-cd76-e511-9fc1-ac853d9f53cc',cb_entryCreatedDate='2018/4/22 21:55:00';loadViewCount(cb_entryId);var cb_postType=1;</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="https://www.cnblogs.com/v88v/p/8909845.html#" onclick="return RefreshPage();">刷新页面</a><a href="https://www.cnblogs.com/v88v/p/8909845.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】超50万VC++源码: 大型组态工控、电力仿真CAD与GIS源码库！</a><br><a href="https://www.linuxprobe.com/chapter-00.html" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-linuxprobe&#39;)">【免费】要想入门学习Linux系统技术，你应该先选择一本适合自己的书籍</a><br><a href="https://www.grapecity.com.cn/developer/spreadjs?utm_source=cnblogs&amp;utm_medium=blogpage&amp;utm_term=bottom&amp;utm_content=SpreadJS&amp;utm_campaign=community" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-SpreadJS&#39;)">【前端】SpreadJS表格控件，可嵌入应用开发的在线Excel</a><br><a href="https://cloud.tencent.com/developer/edu/major-100005?fromSource=gwzcw.1312543.1312543.1312543#course-1274" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-微信支付&#39;)">【直播】如何快速接入微信支付功能</a><br></div>
+<div id="opt_under_post"></div>
+<div id="cnblogs_c1" class="c_ad_block"><a href="https://cloud.tencent.com/act/special/rav?fromSource=gwzcw.1312547.1312547.1312547" target="_blank"><img width="300" height="250" src="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/24442-20180914091419057-283402001.jpg" alt="腾讯云" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;C1&#39;);"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="https://news.cnblogs.com/n/608089/" target="_blank">风波后章泽天朋友圈首次发声：只要一家人在一起便是圆满</a><br> ·  <a href="https://news.cnblogs.com/n/608088/" target="_blank">腾讯视频新增护眼功能：再不怕孩子“越看越近”了</a><br> ·  <a href="https://news.cnblogs.com/n/608087/" target="_blank">ofo：利用GSE融资报道不实 纯属无稽之谈</a><br> ·  <a href="https://news.cnblogs.com/n/608085/" target="_blank">传微信内测「语音进度条拖拽」功能，被子弹短信刺痛？</a><br> ·  <a href="https://news.cnblogs.com/n/608082/" target="_blank">苹果未来秘密在这里！从神秘组织到七大技术布局</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="cnblogs_c2" class="c_ad_block"><a href="http://clickc.admaster.com.cn/c/a113319,b2799157,c1705,i0,m101,8a1,8b3,h" target="_blank"><img width="468" height="60" src="./【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统 - 纵世科技 - 博客园_files/24442-20180916205959082-1265433055.jpg" alt="华为云HC0917" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;C2&#39;);"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="https://kb.cnblogs.com/page/606682/" target="_blank">为什么说 Java 程序员必须掌握 Spring Boot ？</a><br> ·  <a href="https://kb.cnblogs.com/page/606645/" target="_blank">在学习中，有一个比掌握知识更重要的能力</a><br> ·  <a href="https://kb.cnblogs.com/page/603663/" target="_blank">如何招到一个靠谱的程序员</a><br> ·  <a href="https://kb.cnblogs.com/page/573614/" target="_blank">一个故事看懂“区块链”</a><br> ·  <a href="https://kb.cnblogs.com/page/603697/" target="_blank">被踢出去的用户</a><br></div>» <a href="https://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="https://home.cnblogs.com/u/v88v/">纵世科技</a><br>园龄：<a href="https://home.cnblogs.com/u/v88v/" title="入园时间：2015-10-20">2年11个月</a><br>粉丝：<a href="https://home.cnblogs.com/u/v88v/followers/">15</a><br>关注：<a href="https://home.cnblogs.com/u/v88v/followees/">2</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow(&#39;d7e80433-cd76-e511-9fc1-ac853d9f53cc&#39;)">+加关注</a></div><script>getFollowStatus('d7e80433-cd76-e511-9fc1-ac853d9f53cc')</script></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2018/08/01&#39;);return false;">&lt;</a></td><td align="center">2018年9月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2018/10/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td class="CalOtherMonthDay" align="center">31</td><td class="CalWeekendDay" align="center">1</td></tr><tr><td class="CalWeekendDay" align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">6</td><td align="center">7</td><td class="CalWeekendDay" align="center">8</td></tr><tr><td class="CalWeekendDay" align="center">9</td><td align="center">10</td><td align="center">11</td><td align="center">12</td><td align="center">13</td><td align="center">14</td><td class="CalWeekendDay" align="center">15</td></tr><tr><td class="CalWeekendDay" align="center">16</td><td align="center">17</td><td align="center">18</td><td align="center">19</td><td align="center">20</td><td align="center">21</td><td class="CalWeekendDay" align="center">22</td></tr><tr><td class="CalWeekendDay" align="center">23</td><td align="center">24</td><td class="CalTodayDay" align="center">25</td><td align="center">26</td><td align="center">27</td><td align="center">28</td><td class="CalWeekendDay" align="center">29</td></tr><tr><td class="CalWeekendDay" align="center">30</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="https://www.cnblogs.com/v88v/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="https://www.cnblogs.com/v88v/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="https://www.cnblogs.com/v88v/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="https://www.cnblogs.com/v88v/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="https://www.cnblogs.com/v88v/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="https://www.cnblogs.com/v88v/tag/python/">python</a>(4)</li><li><a href="https://www.cnblogs.com/v88v/tag/xadmin/">xadmin</a>(3)</li><li><a href="https://www.cnblogs.com/v88v/tag/Django/">Django</a>(3)</li><li><a href="https://www.cnblogs.com/v88v/tag/%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">学生信息管理系统</a>(2)</li><li><a href="https://www.cnblogs.com/v88v/tag/%E5%8F%8B%E7%9B%9F/">友盟</a>(1)</li><li><a href="https://www.cnblogs.com/v88v/tag/%E5%8E%9F%E5%88%9B/">原创</a>(1)</li><li><a href="https://www.cnblogs.com/v88v/tag/%E8%87%AA%E5%8A%A8%E5%8C%96/">自动化</a>(1)</li><li><a href="https://www.cnblogs.com/v88v/tag/%E5%B7%A5%E5%85%B7/">工具</a>(1)</li><li><a href="https://www.cnblogs.com/v88v/tag/%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95/">模拟登录</a>(1)</li><li><a href="https://www.cnblogs.com/v88v/tag/%E8%BD%AF%E4%BB%B6/">软件</a>(1)</li><li><a href="https://www.cnblogs.com/v88v/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_categories">
+<div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
+<h3 class="catListTitle">随笔分类</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="https://www.cnblogs.com/v88v/category/1200122.html">Django学习心得(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="https://www.cnblogs.com/v88v/category/912957.html">心情随笔(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="https://www.cnblogs.com/v88v/category/912994.html">原创软件(13)</a> </li>
+
+</ul>
+
+</div>
+
+<div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="https://www.cnblogs.com/v88v/archive/2018/07.html">2018年7月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="https://www.cnblogs.com/v88v/archive/2018/04.html">2018年4月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_2" href="https://www.cnblogs.com/v88v/archive/2017/04.html">2017年4月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_3" href="https://www.cnblogs.com/v88v/archive/2016/12.html">2016年12月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_4" href="https://www.cnblogs.com/v88v/archive/2016/11.html">2016年11月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_5" href="https://www.cnblogs.com/v88v/archive/2016/06.html">2016年6月 (1)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/v88v/p/8886764.html#3960339">1. Re:【Python3.6+Django2.0+Xadmin2.0系列教程之二（入门篇-中）】学生信息管理系统</a></li>
+        <li class="recent_comment_body">和适合入门，期待博主的更多教程。</li>
+        <li class="recent_comment_author">--jitlxw</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/v88v/p/8886764.html#3959362">2. Re:【Python3.6+Django2.0+Xadmin2.0系列教程之二（入门篇-中）】学生信息管理系统</a></li>
+        <li class="recent_comment_body">很强，对于Python和Django都刚刚迭代更新不久，Xadmin还没更新跟上，我就入门Django+Xadmin的我简直入了一个大坑。感谢博主的改良版Xadmin呀，保持关注github和您的博客......</li>
+        <li class="recent_comment_author">--何杨</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="https://www.cnblogs.com/v88v/p/8886764.html">1. 【Python3.6+Django2.0+Xadmin2.0系列教程之二（入门篇-中）】学生信息管理系统(2501)</a></li><li><a href="https://www.cnblogs.com/v88v/p/8858853.html">2. 【Python3.6+Django2.0+Xadmin2.0系列教程之一（入门篇-上）】环境搭建及项目创建(1688)</a></li><li><a href="https://www.cnblogs.com/v88v/p/8909845.html">3. 【Python3.6+Django2.0+Xadmin2.0系列教程之三（入门篇-下）】学生信息管理系统(1008)</a></li><li><a href="https://www.cnblogs.com/v88v/p/8858955.html">4. [原创软件]PC端与移动端文件信息互通工具(256)</a></li><li><a href="https://www.cnblogs.com/v88v/p/6686920.html">5. [原创软件]考勤查询工具(99)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="https://www.cnblogs.com/v88v/p/8886764.html">1. 【Python3.6+Django2.0+Xadmin2.0系列教程之二（入门篇-中）】学生信息管理系统(2)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="https://www.cnblogs.com/v88v/p/8858853.html">1. 【Python3.6+Django2.0+Xadmin2.0系列教程之一（入门篇-上）】环境搭建及项目创建(1)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2018 纵世科技
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>
